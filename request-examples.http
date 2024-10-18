@@ -1,0 +1,47 @@
+###
+
+# curl -L 'localhost:8088/api/search?query=Robert&limit=1&orgId=10&teamId=1&userId=2'
+GET http://localhost:8088/api/search?
+    query=robert&
+    limit=1&
+    orgId=10&
+    teamId=1&
+    userId=2
+
+###
+
+# curl -L 'localhost:8088/api/search?query=All%20users%20that%20I%20mentioned%20so%20far%20&limit=10&orgId=10&teamId=1&userId=2'
+GET localhost:8088/api/search?
+    query=Mention%20all%20users%20that%20I%20mentioned%20so%20far%20&
+    limit=10&
+    orgId=10&
+    teamId=1&
+    userId=2
+
+###
+
+# curl -L 'localhost:8088/api/search?query=Who%20am%20I%3F&limit=10&orgId=1&teamId=1&userId=2'
+GET localhost:8088/api/search?query=Who%20am%20I%3F&
+    limit=10&
+    orgId=1&
+    teamId=1&
+    userId=2
+
+###
+
+# curl -L 'localhost:8088/api/search?query=Who%20are%20my%20teamates%3F&limit=10&orgId=1&teamId=1&userId=2'
+GET localhost:8088/api/search?
+    query=Who%20are%20my%20teamates%3F&
+    limit=10&
+    orgId=1&
+    teamId=1&
+    userId=2
+
+###
+
+
+
+
+
+
+

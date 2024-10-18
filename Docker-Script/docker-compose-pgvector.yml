@@ -1,0 +1,33 @@
+services:
+    postgres:
+        image: ankane/pgvector:v0.5.0
+        restart: always
+        environment:
+          - POSTGRES_USER=postgres
+          - POSTGRES_PASSWORD=postgres
+          - POSTGRES_DB=postgres
+          - PGPASSWORD=postgres
+        logging:
+          options:
+            max-size: 10m
+            max-file: "3"
+        ports:
+          - '5432:5432'
+        healthcheck:
+          test: "pg_isready -U postgres -d postgres"
+          interval: 2s
+          timeout: 20s
+          retries: 10
+    pgadmin:
+        container_name: pgadmin_container
+        image: dpage/pgadmin4
+        environment:
+          PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+          PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+        volumes:
+          - ./pgadmin-data:/var/lib/pgadmin
+          - ./servers.json:/pgadmin4/servers.json
+        ports:
+          - "${PGADMIN_PORT:-5050}:80"
+        depends_on:
+          - postgres
